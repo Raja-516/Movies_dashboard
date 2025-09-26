@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TFI Movies</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.4s ease-in-out;
+    min-height: 100vh;
+  }
+
+  nav {
+    background: rgba(0,0,0,0.7);
+    padding: 0.5rem 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .brand {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    margin-right: auto;
+  }
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-list a {
+    text-decoration: none;
+    color: white;
+    padding: 0.25rem 0.5rem;
+  }
+  .nav-list a[aria-current="page"] {
+    border-bottom: 2px solid #fff;
+  }
+
+  .content {
+    display: flex;
+    padding: 1rem;
+  }
+
+  /* Left info panel */
+  .main-display {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 350px; /* leave space for right panel */
+  }
+  .display-card {
+    background: rgba(0,0,0,0.4);
+    /* padding: 12rem; */
+    margin-top: 50px;
+    margin-left: -50px;
+    border-radius: 12px;
+    width: 700px;
+    height: 500px;
+    max-width: 900px;
+    text-align: center;
+  }
+  .display-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  .display-desc {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    line-height: 1.4;
+    padding: 1rem;
+  }
+
+  /* Right thumbnails bar */
+  .thumbnails-wrapper {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    padding: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    max-width: 350px;
+    scrollbar-width: none;
+  }
+  .thumbnails-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .thumb {
+    flex: 0 0 auto;
+    width: 150px;   /* portrait width */
+    height: 300px;  /* portrait height */
+    
+    object-fit: cover;
+    border: none;
+    cursor: pointer;
+    transition: transform .2s, filter .2s;
+  }
+  .thumb:hover,
+  .thumb:focus-visible {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    outline: none;
+  }
+  .thumb.active {
+    filter: brightness(1.2);
+  }
+
+  /* Mobile view */
+  @media (max-width: 900px) {
+    .main-display {
+      padding-right: 0;
+    }
+    .thumbnails-wrapper {
+      position: static;
+      transform: none;
+      max-width: 100%;
+      border-radius: 0;
+      justify-content: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+<nav aria-label="Main navigation">
+  <a href="#" class="brand">TFI Movies</a>
+  <ul class="nav-list">
+    <li><a href="#" >Home</a></li>
+    <li><a href="#">Movies</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">contact</a></li>
+  </ul>
+</nav>
+
+<div class="content">
+  <!-- Left Info Panel -->
+  <div class="main-display">
+    <div class="display-card" aria-live="polite">
+      <h1 id="big-title" class="display-title">Title</h1>
+      <p id="big-desc" class="display-desc">Description</p>
+    </div>
+  </div>
+</div>
+
+<!-- Right Horizontal Scroll Thumbnails -->
+<div class="thumbnails-wrapper" role="list">
+  <img class="thumb" 
+       src="https://i0.wp.com/www.socialnews.xyz/wp-content/uploads/2017/12/09/Rangasthalam-Movie-HD-Still-and-Poster-.jpg?fit=2824%2C4000&quality=90&zoom=1&ssl=1"
+       data-bg="https://wallpapercave.com/wp/wp6866011.jpg"
+       alt="Movie poster 1" 
+       data-title="Rangasthalam"
+       data-description="Rangasthalam (transl. Stage/Theatre) is a 2018 Indian Telugu-language action drama film written and directed by Sukumar. Produced by Y. Naveen, Y. Ravi Shankar and C. V. Mohan for the company Mythri Movie Makers, the film stars Ram Charan and Samantha Ruth Prabhu with, Jagapathi Babu, Naresh, Prakash Raj, Sunil Barve, Aadhi Pinisetty, and Anasuya Bharadwaj in key supporting roles. Rangasthalam is set in the eponymous fictional village in the 1980s. It narrates the story of two brothers, Chittibabu (Charan) and Kumar Babu (Pinisetty) who oppose the village's local government and the corrupt co-operative society led by its president Phanindra Bhupathi (Babu).">
+
+  <img class="thumb" 
+       src="https://th.bing.com/th/id/OIP.Zv8EB7mhjPY_W03p3rXoUwHaK-?w=117&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+       data-bg="https://wallpaperaccess.com/full/2108545.jpg"
+       alt="Movie poster 2" 
+       data-title="Bahubali"
+       data-description="Baahubali is an epic story in which, a baby boy is miraculously found alive in the middle of a river by a few villagers. They raise him as their own. Named Shiva (Prabhas), the boy grows up to be an adventurous commoner until his past comes back to haunt him.
+
+ ">
+  <img class="thumb" 
+       src="https://tse4.mm.bing.net/th/id/OIP.tr2GPadJdS99pHY8buh6IgAAAA?pid=ImgDet&w=184&h=258&c=7&dpr=1.3&o=7&rm=3"
+       data-bg="https://wallpaperaccess.com/full/8323800.jpg"
+       alt="Movie poster 6" 
+       data-title="Jersey "
+       data-description="Jersey is a 2022 Indian Hindi-language sports drama that follows the journey of a former cricketer, Arjun Talwar, who returns to the sport at the age of 36 to fulfill his son's dream and prove his worth.
+Plot Overview
+ tells the story of Arjun Talwar, played by Shahid Kapoor, a once-promising cricketer who quits the sport after being overlooked for selection to the Indian national team. The film begins with Arjun's struggles in life after his cricket career ends prematurely due to politics and personal setbacks. He faces financial difficulties and is unable to provide for his family, including his son Ketan, who wishes for an Indian cricket team jersey for his birthday.">
+  <img class="thumb" 
+       src="https://tse1.mm.bing.net/th/id/OIP.oXbdjgpktVqBtGQvzLdxqQAAAA?w=214&h=299&rs=1&pid=ImgDetMain&o=7&rm=3  "
+       data-bg="https://wallpapercave.com/wp/wp6677278.jpg"
+       alt="Movie poster 4" 
+       data-title="Dhruva"
+       data-description="Dhruva is a 2016 Indian Telugu-language action thriller film directed by Surender Reddy and produced by Allu Aravind under his banner Geetha Arts. A remake of the Tamil film Thani Oruvan (2015), it follows Dhruva, an IPS officer who wants to arrest Siddharth Abhimanyu, a wealthy scientist, who uses secret medical and illegal practices for profit. It stars Ram Charan in the title role alongside Aravind Swamy (who reprises his role from the original version), Rakul Preet Singh, and Navdeep in pivotal roles.">
+
+  <img class="thumb" 
+       src="https://tse3.mm.bing.net/th/id/OIP.JJByG3494edhtrj4kB6n9gAAAA?pid=ImgDet&w=184&h=276&c=7&dpr=1.3&o=7&rm=3"
+       data-bg="https://th.bing.com/th/id/OIP.cvM4LDpSY06b8KUDtj4wlAHaEK?w=333&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+       alt="Movie poster 3" 
+       data-title="Sethamma Vakitlo Sirimalle Chettu"
+       data-description="Seethamma Vakitlo Sirimalle Chettu[a] (transl. The jasmine vine in Seethamma's courtyard), also known by the initialism SVSC, is a 2013 Indian Telugu-language family drama film written and directed by Srikanth Addala. It was produced by Dil Raju's Sri Venkateswara Creations, and stars Venkatesh, Mahesh Babu, Anjali and Samantha, while Prakash Raj, Jayasudha, Rao Ramesh, Kota Srinivasa Rao, Abhinaya and Rohini Hattangadi play supporting roles.">
+
+  <img class="thumb" 
+       src="https://tse4.mm.bing.net/th/id/OIP.9RZ7Tpjfqw7UyjMcifpNvgHaKf?pid=Api&P=0&h=300"
+       data-bg="https://th.bing.com/th/id/OIP.fnbeH7qIXoQlCkgX3ur3SgHaDt?w=363&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+       alt="Movie poster 5" 
+       data-title="Raja The Great"
+       data-description="Raja the Great is a 2017 Indian Telugu-language action comedy film written and directed by Anil Ravipudi and produced by Dil Raju on Sri Venkateswara Creations banner. The film stars Ravi Teja as a visually impaired man, alongside Mehreen Pirzada and Radhika. Vivan Bhatena (in his Telugu Debut), Rajendra Prasad, Prakash Raj and Sampath Raj play supporting roles with music composed by Sai Karthik. The film marks the debut of Teja's son Mahadhan as child actor.">
+
+    <img class="thumb" 
+       src="https://th.bing.com/th/id/OIP.KCCAzKzfbauqz20nIem9FgHaJw?w=208&h=274&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+       data-bg="https://tse3.mm.bing.net/th/id/OIP.hODlmTYgNX5X8X_irog90wHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+       alt="Movie poster 6" 
+       data-title="Gabbar Singh"
+       data-description="Gabbar Singh is a 2012 Indian Telugu-language masala film directed by Harish Shankar. It is a remake of the 2010 Hindi film Dabangg. The film stars Pawan Kalyan and Shruti Haasan. Devi Sri Prasad composed the film's music and Jayanan Vincent was the cinematographer. The plot follows Venkataratnam Naidu, a police officer who, inspired by a film character, adopts the name Gabbar Singh. Posted in a village, he faces off against a local thug aspiring to join politics who manipulates his half-brother. Gabbar Singh embarks on a mission to dismantle the thug's corrupt political ambitions and restore justice.">
+</div>
+<div>
+  <P>This is about page</P>
+</div>
+<div>this is contact page that will contact with the developer </div>
+
+<script>
+  const thumbs = document.querySelectorAll('.thumb');
+  const bigTitle = document.getElementById('big-title');
+  const bigDesc = document.getElementById('big-desc');
+
+  function showMovie(img) {
+    const bg = img.dataset.bg || img.src; // use data-bg if available
+    const title = img.dataset.title || 'No title';
+    const desc = img.dataset.description || 'No description';
+    document.body.style.backgroundImage = `url('${bg}')`;
+    bigTitle.textContent = title;
+    bigDesc.textContent = desc;
+
+    thumbs.forEach(t => t.classList.remove('active'));
+    img.classList.add('active');
+  }
+
+  if (thumbs[0]) {
+    showMovie(thumbs[0]);
+  }
+
+  thumbs.forEach(t => {
+    t.addEventListener('mouseenter', () => showMovie(t));
+    t.addEventListener('focus', () => showMovie(t));
+    t.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showMovie(t);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
